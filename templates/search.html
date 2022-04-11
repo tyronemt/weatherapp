@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Weather App</title>
+        <style>
+          body {
+            background-color: #4674d6;
+          }
+          form {
+            width: 400px;
+            margin: auto;
+            margin-top: 15px;
+          }
+          h1{
+            color: rgb(255, 255, 255);
+            margin-top: 250px;
+            font-family: 'Georgia';
+            font-weight: bold;
+            text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+          }
+          input {
+            padding: 4px 10px;
+            border: 0;
+            border-radius: 4px;
+            font-size: 16px;
+          }
+          .search {
+            border-radius: 4px;
+            width: 75%;
+          }
+          .submit {
+            width: 70px;
+            background-color: #1c87c9;
+            color: #ffffff;
+          }
+          body{
+            background-image:url({{background}});
+            background-position: center;
+            background-size: cover;
+          }
+        </style>
+    <body>
+    
+    <h1><center>{{ location["name"] }} </center>  </h1>  <br>
+        {{ location["weather"][0]["main"] }} <br>
+        {{ location["main"]["temp"] }}<br>
+        
+    </body>
+</html>
+
+{% endblock %}
