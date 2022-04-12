@@ -39,19 +39,21 @@
           .search {
             border-radius: 4px;
             width: 75%;
-          }
+          } 
           .submit {
-            width: 70px;
             background-color: #1c87c9;
             color: #ffffff;
           }
         </style>
     <body>
     
-    <h1><center>{{ location["name"] }} </center>  </h1>  <br>
-    <h2><center> {{ location["weather"][0]["description"] }} </center> </h2><br>
-    <h2> <center> {{ f }} F  </center></h2><br>
-        
+    <h1><center> ERROR: Input location does not exist !!! <br>
+        <form action="/">
+            <input type="submit" name="submit" class="submit" value="Take me back to Home">
+          </form>
+        </center>  
+    </h1> 
+    
     </body>
 </html>
 

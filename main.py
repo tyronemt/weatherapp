@@ -16,6 +16,7 @@ dic = {
     "Clear" : "https://i.gifer.com/XFbw.gif",
     "Clouds" : "https://i.gifer.com/7RtV.gif"
 }
+
 def get_weather(location):
     response = requests.get(json_url + "&q=" + location).json()
     return response 
@@ -26,13 +27,16 @@ def index():
 
 @app.route("/location", methods=['GET', 'POST'])
 def weather():
+    faren = None
+    f = None
     location = request.args.get('text')
     temp = get_weather(location)
     try:
-        gif = dic[temp["weather"][0]["main"]]
-    except KeyError:
-        pass
-    return render_template('search.html', location = temp, background = gif)
+        faren = round((temp["main"]["temp"] - 273.15) * 9/5 + 32, 1)
+        temp["weather"][0]["description"] = temp["weather"][0]["description"].upper()
+    except:
+        return render_template('error.html')
+    return render_template('search.html', location = temp, f = faren)
 
 if __name__ == "__main__":
     app.run(debug=True)
